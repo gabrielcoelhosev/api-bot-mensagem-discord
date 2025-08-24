@@ -1,9 +1,13 @@
 import type { FastifyReply, FastifyRequest } from "fastify";
+import { postLog } from "../routes/discord/postLog.js";
 
 export function logger(req: FastifyRequest, reply: FastifyReply){
     const { ip, method, port, url } = req;
     const { statusCode } = reply;
-    return console.log(`[ ${ip} - ${method} - ${formataStatusCode(statusCode)} - ${port}${url} ]`);
+    const log =`[ ${ip} - ${method} - ${formataStatusCode(statusCode)} - ${port}${url} ]`;
+    const logDiscord =`[ ${ip} - ${method} - ${statusCode} - ${port}${url} ]`;
+    console.log(log)
+    return postLog(logDiscord);
 }
 
 function formataStatusCode(status: number){
