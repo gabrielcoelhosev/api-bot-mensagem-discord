@@ -1,17 +1,13 @@
 import type { FastifyReply, FastifyRequest } from "fastify";
 import { enviarMensagem } from "../../api/discord.js";
+import z from 'zod';
 
-interface SendMessageBody {
-    message: string,
-    channelId: string,
-    embed?: {
-        title?: string,
-        descripion?: string
-    }
-}
+const bodySchema = z.object({
+    message: z.string()
+});
 
-export async function postMensagem(req: FastifyRequest<{Body: SendMessageBody}>, reply: FastifyReply){
-    const { message } = req.body;
+export async function postMensagem(req: FastifyRequest, reply: FastifyReply){
+    const { message } = bodySchema.parse(req.body);
 
     const result = await enviarMensagem(message);
     
