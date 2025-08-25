@@ -1,6 +1,6 @@
 import type { FastifyReply, FastifyRequest } from "fastify";
-import { enviarMensagem } from "../../api/discord.js";
 import z from 'zod';
+import { enviarMensagem } from "../../api/utils/enviarMensagem.js";
 
 const bodySchema = z.object({
     message: z.string()

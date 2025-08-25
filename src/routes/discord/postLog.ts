@@ -1,4 +1,4 @@
-import { enviarMensagem } from "../../api/discord.js";
+import { enviarMensagem } from "../../api/utils/enviarMensagem.js";
 
 export async function postLog(logger: string){
     const log = await enviarMensagem(logger);

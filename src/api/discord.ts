@@ -34,12 +34,3 @@ discordClient.once("clientReady", async () => {
         console.error("Erro ao buscar canal:", err);
     }
 });
-
-
-export async function enviarMensagem(texto: string){
-    if(!canal){
-        throw new Error('Erro ao encontrar canal de texto');
-    }
-
-    return canal?.send(texto);
-}
