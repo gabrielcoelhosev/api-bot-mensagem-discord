@@ -14,7 +14,7 @@ export let canal: TextChannel | null = null;
 discordClient.login(env.DISCORD_BOT_TOKEN);
 
 discordClient.once("clientReady", async () => {
-    console.log(`🤖 Bot logado como ${discordClient.user?.tag}`);
+    console.log(`Bot logado como ${discordClient.user?.tag}`);
 
     try {
         const fetched = await discordClient.channels.fetch(env.CHANNEL_ID);
